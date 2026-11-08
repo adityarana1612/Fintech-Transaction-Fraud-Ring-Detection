@@ -1,0 +1,2 @@
+total_hops,round_trip_hops,hops_forwarded_within_1h,median_forward_minutes,pass_through_accounts,maximal_paths,longest_path_txns,pct_out_fraud_given_in_fraud,pct_out_fraud_given_in_legit,overall_fraud_rate_pct
+105058,1,6416,682.3,96562,103639,4,3.179,3.705,3.591

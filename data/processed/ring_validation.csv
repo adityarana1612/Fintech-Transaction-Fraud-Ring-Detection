@@ -1,0 +1,6 @@
+band,band_order,groups,sender_accounts,avg_sent_txns,observed_labelled,expected_labelled,observed_to_expected,oe_ci95_low,oe_ci95_high,pct_labelled
+Not in a linked group of 3+,0,0,636675,5.36,109966,109978.9,1.000,0.994,1.006,17.27
+Network score 0-14,1,39978,140595,6.01,26610,27613.3,0.964,0.952,0.975,18.93
+Network score 15-24,2,9433,63795,6.20,13568,12959.5,1.047,1.029,1.065,21.27
+Network score 25-34,3,2663,29091,6.27,6120,5977.2,1.024,0.998,1.050,21.04
+Network score 35+,4,1517,26307,6.31,5708,5442.5,1.049,1.022,1.076,21.70

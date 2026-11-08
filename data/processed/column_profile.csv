@@ -1,0 +1,22 @@
+column_name,rows,null_or_blank,distinct_values,min_text_value,max_text_value
+transaction_id,5000000,0,5000000,T100000,T999999
+timestamp,5000000,0,5000000,2023-01-01 00:00:24.048140,2024-01-28 23:57:09.371969
+sender_account,5000000,0,896463,1000009891,9999995539
+receiver_account,5000000,0,896589,1000009891,9999995539
+transaction_type,5000000,0,4,deposit,withdrawal
+merchant_category,5000000,0,21,ABC Transport Ticket,SportyBet Deposit
+location,5000000,0,10,Aba,Port Harcourt
+device_used,5000000,0,4,atm,web
+is_fraud,5000000,0,2,False,True
+fraud_type,5000000,4820447,2,Account Takeover,Identity Fraud
+time_since_last_transaction,5000000,896513,4103487,-0.0010943680555555,999.99798766
+spending_deviation_score,5000000,0,918,-0.0,5.02
+velocity_score,5000000,0,20,1,9
+geo_anomaly_score,5000000,0,101,0.0,1.0
+payment_channel,5000000,0,4,Bank Transfer,USSD
+ip_address,5000000,0,362362,102.89.32.0,41.58.255.99
+device_hash,5000000,0,3835723,D1000002,D9999999
+amount_ngn,5000000,0,4597405,100.07,999997.57
+bvn_linked,5000000,0,2,False,True
+new_device_transaction,5000000,0,2,False,True
+sender_persona,5000000,0,3,Salary Earner,Trader

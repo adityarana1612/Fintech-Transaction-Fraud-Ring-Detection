@@ -1,0 +1,23 @@
+kpi_order,kpi,value,definition
+1,total_transactions,5000000,All source transactions analysed
+2,total_accounts,899937,Distinct accounts seen as sender or receiver
+3,sender_accounts,896463,Accounts that sent >= 1 transaction
+4,fraud_transactions,179553,Source label is_fraud = True
+5,fraud_rate_pct,3.591,Fraud transactions / all transactions
+6,fraud_labelled_accounts,161972,Accounts that sent >= 1 labelled transaction
+7,flagged_transactions,37996,Rule tier HIGH or CRITICAL
+8,suspicious_value_ngn,159297694696.92,Value of HIGH/CRITICAL transactions
+9,flagged_accounts,36668,Accounts with >= 1 HIGH/CRITICAL sent transaction
+10,flagged_accounts_in_ring,2472,Flagged accounts that belong to a potential fraud ring (ring tier >= MEDIUM)
+11,high_risk_accounts,20992,Sending accounts with a CRITICAL transaction or in a HIGH/CRITICAL ring
+12,linked_groups_3plus,53591,Connected groups of >= 3 linked accounts
+13,potential_fraud_rings,1858,Linked groups scored MEDIUM or above
+14,high_critical_rings,1263,Linked groups scored HIGH or CRITICAL
+15,accounts_requiring_investigation,16505,Unlabelled accounts meeting investigation criteria
+16,investigation_cases,3244,Open cases in the queue
+17,device_linked_pairs_1h,594,"Txn pairs: same device, different accounts, <= 1 h"
+18,ip_overlap_pairs_10m,18372,"Txn pairs: same IP, different accounts, <= 10 min (all IP classes)"
+19,ip_overlap_pairs_eligible,3018,"As above, excluding high-density shared networks"
+20,money_flow_hops_24h,105058,A->B followed by B->C within 24 h
+21,money_flow_maximal_paths,103639,Maximal chains from the recursive CTE
+22,velocity_spec_breaches,0,Accounts with > 5 txns in any 10-minute window

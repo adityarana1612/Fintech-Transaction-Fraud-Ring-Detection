@@ -1,0 +1,2 @@
+max_txns_any_10m_window,max_txns_any_1h_window,max_txns_any_24h_window,accounts_breaching_spec_rule,multi_txn_episodes_10m_gap,accounts_2plus_in_10m,accounts_3plus_in_1h,accounts_3plus_in_24h,median_hours_between_txns
+3,3,4,0,1072,1071,7,1367,878.6

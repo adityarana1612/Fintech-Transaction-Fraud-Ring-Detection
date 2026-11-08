@@ -1,0 +1,26 @@
+check_code,description,result,rule_type,status
+ROW_COUNT,Total rows in raw file,5000000,info,PASS
+DUP_TRANSACTION_ID,Duplicate transaction_id values,0,must_be_zero,PASS
+DUP_BUSINESS_KEY,"Duplicate (sender, receiver, timestamp, amount) rows",0,must_be_zero,PASS
+BAD_TRANSACTION_ID,transaction_id not matching ^T[0-9]+$,0,must_be_zero,PASS
+MISSING_SENDER,Missing sender_account,0,must_be_zero,PASS
+MISSING_RECEIVER,Missing receiver_account,0,must_be_zero,PASS
+BAD_ACCOUNT_FORMAT,Account id not a 10-digit number (sender or receiver),0,must_be_zero,PASS
+SELF_TRANSFER,"sender_account = receiver_account (kept, flagged, excluded from money-flow graph)",6,info,PASS
+BAD_TIMESTAMP,Timestamp not parseable,0,must_be_zero,PASS
+TIMESTAMP_OUT_OF_RANGE,Timestamp outside 2023-01-01 .. 2024-01-31,0,must_be_zero,PASS
+BAD_AMOUNT,Amount not numeric,0,must_be_zero,PASS
+NON_POSITIVE_AMOUNT,Amount <= 0,0,must_be_zero,PASS
+BAD_TRANSACTION_TYPE,"transaction_type outside {deposit, payment, transfer, withdrawal}",0,must_be_zero,PASS
+BAD_DEVICE_ID,device_hash not matching ^D[0-9]{7}$ after normalisation,0,must_be_zero,PASS
+BAD_IP,ip_address not a valid dotted IPv4 (each octet 0-255),0,must_be_zero,PASS
+BAD_FRAUD_LABEL,"is_fraud not in {True, False}",0,must_be_zero,PASS
+FRAUD_TYPE_WITHOUT_LABEL,fraud_type populated while is_fraud = False,0,must_be_zero,PASS
+LABEL_WITHOUT_FRAUD_TYPE,is_fraud = True but fraud_type missing,0,must_be_zero,PASS
+FRAUD_ROWS,Rows labelled is_fraud = True,179553,info,PASS
+BAD_BOOLEAN_FLAGS,"bvn_linked / new_device_transaction not in {True, False}",0,must_be_zero,PASS
+UNMAPPED_MERCHANT,merchant_category with no merchant_group mapping,0,must_be_zero,PASS
+PERSONA_INCONSISTENT,Sender accounts with more than one sender_persona,0,must_be_zero,PASS
+SRC_TSL_NULL,Source time_since_last_transaction is NULL (first event per account in source order),896513,info,PASS
+SRC_TSL_NEGATIVE,Source time_since_last_transaction < 0 (inconsistent with timestamps - field not used),2051331,info,PASS
+TYPE_MERCHANT_CONFLICT,transaction_type = 'deposit' paired with a cash-withdrawal merchant (synthetic-data artefact),104493,info,PASS

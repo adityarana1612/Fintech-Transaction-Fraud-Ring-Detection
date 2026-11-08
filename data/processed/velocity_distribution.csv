@@ -1,0 +1,11 @@
+window_label,txns_in_window,txn_count,fraud_txns,fraud_rate_pct
+trailing_10m,1,4998926,179510,3.591
+trailing_10m,2,1073,43,4.007
+trailing_10m,3,1,0,0.000
+trailing_1h,1,4993505,179291,3.590
+trailing_1h,2,6488,262,4.038
+trailing_1h,3,7,0,0.000
+trailing_24h,1,4897068,175756,3.589
+trailing_24h,2,101537,3751,3.694
+trailing_24h,3,1380,45,3.261
+trailing_24h,4,15,1,6.667

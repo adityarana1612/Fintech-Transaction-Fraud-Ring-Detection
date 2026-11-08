@@ -1,0 +1,142 @@
+%% ER diagram - schema `fraud` (sql/schema.sql). Render with any Mermaid viewer (GitHub renders .mmd in markdown code blocks).
+%% CORE = observed source data; DERIVED = output of sql/fraud_network.sql (rule-based, not ground truth)
+erDiagram
+    merchants ||--o{ transactions : "categorises"
+    devices ||--o{ transactions : "used by"
+    ip_addresses ||--o{ transactions : "originates"
+    accounts ||--o{ transactions : "sends (sender_account)"
+    accounts ||--o{ transactions : "receives (receiver_account) = money flow"
+    transactions ||--|| fraud_labels : "source label"
+    accounts ||--o{ account_device_mapping : "uses"
+    devices ||--o{ account_device_mapping : "used by"
+    accounts ||--o{ account_ip_mapping : "uses"
+    ip_addresses ||--o{ account_ip_mapping : "used by"
+    transactions ||--o{ suspicious_activity_flags : "DERIVED flags"
+    flag_definitions ||--o{ suspicious_activity_flags : "defines"
+    transactions ||--|| transaction_risk_scores : "DERIVED score"
+    transactions ||--o{ money_flow_paths : "DERIVED root of chain"
+    accounts ||--o{ account_links : "DERIVED account_a / account_b"
+    accounts ||--o| fraud_ring_membership : "DERIVED member of"
+    fraud_rings ||--|{ fraud_ring_membership : "has members"
+    accounts ||--|| account_risk_profile : "DERIVED profile"
+    fraud_rings |o--o{ account_risk_profile : "ring of account"
+    fraud_rings |o--o{ investigation_cases : "RING case"
+    accounts |o--o{ investigation_cases : "ACCOUNT case"
+
+    merchants {
+        varchar merchant_category PK
+        varchar merchant_group
+    }
+    accounts {
+        bigint account_id PK
+        varchar sender_persona
+        timestamp first_seen_ts "first OBSERVED, not creation"
+        timestamp last_seen_ts
+        int sent_txn_count
+        int received_txn_count
+    }
+    devices {
+        varchar device_id PK
+        timestamp first_seen_ts
+        timestamp last_seen_ts
+        int txn_count
+        int account_count
+    }
+    ip_addresses {
+        inet ip_address PK
+        cidr network_prefix16
+        int account_count
+        varchar network_class "derived context"
+    }
+    transactions {
+        varchar transaction_id PK
+        timestamp txn_ts
+        bigint sender_account FK
+        bigint receiver_account FK
+        varchar merchant_category FK
+        varchar device_id FK
+        inet ip_address FK
+        numeric amount_ngn
+        varchar transaction_type
+        boolean src_new_device_flag
+    }
+    fraud_labels {
+        varchar transaction_id PK,FK
+        boolean is_fraud
+        varchar fraud_type
+        varchar label_source
+    }
+    account_device_mapping {
+        bigint account_id PK,FK
+        varchar device_id PK,FK
+        int txn_count
+    }
+    account_ip_mapping {
+        bigint account_id PK,FK
+        inet ip_address PK,FK
+        int txn_count
+    }
+    flag_definitions {
+        varchar flag_code PK
+        varchar flag_family
+        smallint weight
+        varchar data_basis
+    }
+    suspicious_activity_flags {
+        varchar transaction_id PK,FK
+        varchar flag_code PK,FK
+        text flag_detail
+    }
+    transaction_risk_scores {
+        varchar transaction_id PK,FK
+        smallint risk_score
+        varchar risk_tier
+        text flag_list
+    }
+    account_links {
+        bigint account_a PK,FK
+        bigint account_b PK,FK
+        varchar link_type PK
+        int evidence_count
+    }
+    money_flow_paths {
+        bigint path_id PK
+        varchar root_transaction_id FK
+        smallint hop_count
+        text path_text
+        numeric total_value_ngn
+    }
+    fraud_rings {
+        int ring_id PK
+        bigint component_id
+        int account_count
+        text connection_reasons
+        smallint ring_risk_score
+        varchar risk_tier
+    }
+    fraud_ring_membership {
+        int ring_id PK,FK
+        bigint account_id PK,FK
+        int degree
+        boolean has_fraud_label
+    }
+    account_risk_profile {
+        bigint account_id PK,FK
+        int ring_id FK
+        boolean has_fraud_label
+        boolean is_flagged
+        varchar investigation_status
+    }
+    investigation_cases {
+        varchar case_id PK
+        varchar case_type
+        int ring_id FK
+        bigint account_id FK
+        int priority_rank
+        varchar case_status
+    }
+    engine_parameters {
+        varchar param_name PK
+        numeric param_value
+        text rationale
+    }

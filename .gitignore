@@ -1,0 +1,24 @@
+# --- Large data files (exceed GitHub's 100 MB limit) --------------------------
+# Re-create with: python scripts/00_download_data.py && python scripts/01_clean_data.py
+data/raw/*.csv
+data/cleaned/transactions_clean.csv
+# local embedded PostgreSQL cluster (scripts/02_build_database.py fallback)
+data/pgdata/
+
+# --- Python ---------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- OS / editor ------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+~$*.xlsx
+*.tmp
+*.log

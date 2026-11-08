@@ -1,0 +1,13 @@
+flag_code,flag_family,weight,description,data_basis
+AMOUNT_SPIKE,AMOUNT,10,Amount >= 3x the sender's trailing average (>= 2 prior transactions),DERIVED
+FIRST_DEVICE_USE,DEVICE,0,"Derived: first time this sender uses this device_id, sender has earlier history (informational - device ids are near-unique per txn)",DERIVED
+HIGH_VALUE,AMOUNT,15,Amount in the top 5% of all transactions,DERIVED
+HIGH_VELOCITY,VELOCITY,15,>= 2 transactions in trailing 10 min or >= 3 in trailing 1 h by the same sender,DERIVED
+MULTI_BENEFICIARY_24H,VELOCITY,10,>= 3 distinct receivers paid by the sender within trailing 24 hours,DERIVED
+NEW_DEVICE_SRC,DEVICE,15,"Source field new_device_transaction = True (publisher-provided, not reproducible from device_id history)",SOURCE_FIELD
+PRIOR_FRAUD_LINK,NETWORK,20,"Receiver, or a device/IP-linked account, had a source fraud label strictly BEFORE this transaction",DERIVED
+RAPID_PASS_THROUGH,MONEY_FLOW,20,Sender forwards funds within 24 h of receiving funds (money-flow hop),DERIVED
+SHARED_DEVICE_1H,NETWORK,25,Same device_id used by a different sender account within +/- 1 hour,DERIVED
+SHARED_IP_10M,NETWORK,15,Same IP used by a different sender within +/- 10 minutes (IP is NOT a high-density shared network),DERIVED
+SHARED_NETWORK_IP,CONTEXT,0,"Transaction from a high-density shared IP (> 50 accounts) - context only, treated as legitimate shared network",DERIVED
+UNUSUAL_HOUR,TIMING,5,Transaction between 00:00 and 04:59,DERIVED

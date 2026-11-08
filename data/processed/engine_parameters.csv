@@ -1,0 +1,24 @@
+param_name,param_value,unit,rationale
+amount_spike_multiple,3,x,Amount >= 3x the sender's trailing average (requires >= 2 prior transactions)
+device_window_seconds,3600,seconds,Brief: accounts using the same device within one hour
+fast_flow_minutes,60,minutes,Funds forwarded within 60 minutes of receipt = fast pass-through
+flow_max_depth,6,transactions,Recursion guard: at most 6 transfers (7 accounts) per chain
+flow_window_hours,24,hours,Brief: whole money chain must complete within 24h of its first hop
+high_value_percentile,0.95,quantile,High value = top 5% of transaction amounts
+ip_high_density_accounts,50,accounts,IPs serving > 50 distinct accounts behave like carrier-grade NAT / shared gateways: treated as legitimate shared networks and excluded from ring edges
+ip_window_seconds,600,seconds,Two different accounts transacting from one IP within 10 minutes = concurrent use
+multi_beneficiary_24h,3,receivers,>= 3 distinct receivers within the trailing 24 hours
+night_end_hour,4,hour,Unusual-hour window end (inclusive)
+night_start_hour,0,hour,Unusual-hour window start (inclusive)
+ring_min_link_types,2,link types,"Corroboration rule: a group linked by only ONE evidence type is never above LOW, whatever its score"
+ring_tier_critical,60,score,Ring score >= 60 -> CRITICAL
+ring_tier_high,40,score,Ring score 40-59 -> HIGH
+ring_tier_medium,25,score,Ring score 25-39 -> MEDIUM = potential fraud ring (below -> LOW linked group)
+tier_critical,65,score,Transaction score >= 65 -> CRITICAL
+tier_high,50,score,Transaction score 50-64 -> HIGH. Sized to review capacity: HIGH+CRITICAL ~ 38k txns = ~100 manual reviews/day over the 393-day period
+tier_medium,25,score,Transaction score 25-49 -> MEDIUM (below -> LOW)
+usd_ngn_rate,750,NGN per USD,ASSUMPTION used only to translate the $500 rule threshold (approx. official rate after the June-2023 FX unification); sensitivity covered by threshold sweep
+velocity_cal_10m,2,transactions,Calibrated flag: >= 2 transactions in a trailing 10 minutes (brief threshold never occurs - see C5)
+velocity_cal_1h,3,transactions,Calibrated flag: >= 3 transactions in a trailing hour
+velocity_spec_threshold,5,transactions,Brief: MORE THAN 5 transactions in 10 minutes
+velocity_window_seconds,600,seconds,Brief: 10-minute velocity window

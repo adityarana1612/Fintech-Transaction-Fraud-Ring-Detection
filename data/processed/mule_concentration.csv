@@ -1,0 +1,8 @@
+fraud_inbound_txns,observed_receivers,expected_receivers_if_random,observed_to_expected
+0,733663,733811.8,1.000
+1,147319,147080.5,1.002
+2,14635,14670.3,0.998
+3,925,975.7,0.948
+4,46,48.7,0.945
+5,1,1.9,0.515
+6,0,0.1,0.000

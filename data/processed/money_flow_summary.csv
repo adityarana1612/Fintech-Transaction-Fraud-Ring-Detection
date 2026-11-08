@@ -1,0 +1,4 @@
+hop_count,paths,avg_elapsed_minutes,median_elapsed_minutes,avg_total_value_ngn,avg_last_to_first_amount_ratio,pct_paths_with_fraud_txn,pct_expected_if_independent,lift_vs_independent
+2,102200,708.7,693.7,1496456,59.420,7.14,7.05,1.012
+3,1417,959.2,1069.1,2122992,72.998,10.16,10.39,0.978
+4,22,1065.7,1122.0,2652097,43.431,13.64,13.61,1.002

@@ -1,0 +1,5 @@
+network_class,min_accounts,max_accounts,ip_count,txn_count,pct_of_txns,fraud_txns,fraud_rate_pct,txns_in_10m_overlap,fraud_rate_overlap_pct,treatment
+SINGLE_ACCOUNT,1,1,10573,10573,0.21,345,3.263,0,,Eligible for SHARED_IP_10M flag and ring edges
+SMALL_SHARED,2,10,248035,1220358,24.41,43946,3.601,480,3.750,Eligible for SHARED_IP_10M flag and ring edges
+MODERATE_SHARED,11,50,98745,2472569,49.45,88523,3.580,5545,3.913,Eligible for SHARED_IP_10M flag and ring edges
+HIGH_DENSITY_SHARED,51,365,5009,1296500,25.93,46739,3.605,30127,3.575,Treated as legitimate shared network (CGNAT-like); excluded from ring edges

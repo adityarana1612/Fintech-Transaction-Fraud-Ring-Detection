@@ -1,0 +1,41 @@
+Clean end-to-end run of sql/fraud_network.sql (scripts/02_build_database.py --engine-only) on PostgreSQL 16.2, 5,000,000 transactions, 2026-11-07
+
+  fraud_network.sql [0_setup                     ]     8.1s
+  fraud_network.sql [A1_device_pairs             ]     6.2s
+  fraud_network.sql [A2_device_summary           ]     0.8s
+  fraud_network.sql [A3_device_distribution      ]     7.0s
+  fraud_network.sql [B1_ip_class                 ]     2.6s
+  fraud_network.sql [B2_ip_pairs                 ]    23.5s
+  fraud_network.sql [B3_ip_network_summary       ]    19.3s
+  fraud_network.sql [B4_ip_class_summary         ]    21.7s
+  fraud_network.sql [B5_ip_suspicious_overlap    ]     2.2s
+  fraud_network.sql [C1_txn_features             ]    59.2s
+  fraud_network.sql [C2_beneficiaries            ]     2.4s
+  fraud_network.sql [C3_velocity_episodes        ]    15.7s
+  fraud_network.sql [C4_velocity_distribution    ]     2.8s
+  fraud_network.sql [C5_velocity_spec_check      ]    12.0s
+  fraud_network.sql [D1_flow_hops                ]    17.6s
+  fraud_network.sql [D2_money_flow_paths         ]    21.2s
+  fraud_network.sql [D3_money_flow_summary       ]     0.9s
+  fraud_network.sql [D4_hop_stats                ]     3.3s
+  fraud_network.sql [D5_mule_concentration       ]     5.9s
+  fraud_network.sql [E1_flags                    ]   173.1s
+  fraud_network.sql [E2_scores                   ]    75.2s
+  fraud_network.sql [F1_flag_performance         ]     3.5s
+  fraud_network.sql [F2_tier_performance         ]     4.2s
+  fraud_network.sql [F3_label_concentration      ]     0.2s
+  fraud_network.sql [G1_account_links            ]     4.4s
+  fraud_network.sql [G2_components               ]     7.3s
+  fraud_network.sql [G3_rings                    ]     7.3s
+  fraud_network.sql [G4_membership               ]     3.6s
+  fraud_network.sql [G5_account_profile          ]    14.9s
+  fraud_network.sql [G6_ring_validation          ]     0.9s
+  fraud_network.sql [G7_size_distribution        ]     0.2s
+  fraud_network.sql [G8_status_summary           ]     0.2s
+  fraud_network.sql [H1_views                    ]     0.0s
+  fraud_network.sql [H2_cases                    ]     1.4s
+  fraud_network.sql [I1_rule_eval                ]    35.5s
+  fraud_network.sql [I2_threshold_sweep          ]    12.7s
+  fraud_network.sql [K_kpi                       ]     2.5s
+  exported 30 tables to C:\Users\Aditya\Desktop\Fintech-Transaction-Fraud-Ring-Detection\data\processed
+done in 586s

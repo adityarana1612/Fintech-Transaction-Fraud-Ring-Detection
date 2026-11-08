@@ -1,0 +1,15 @@
+rule_order,rule_id,rule_name,rule_definition,evaluation_status,txns_captured,true_positives,false_positives,false_negatives,true_negatives,precision_pct,recall_pct,false_positive_rate_pct,fraud_value_capture_pct,pct_volume_for_review,lift_vs_base_rate,false_positives_per_fraud_caught,reviews_per_day,f1_score,value_held_ngn
+0,R0,Proposed rule AS WRITTEN,New device AND transfer > $500 AND <= 1 h after ACCOUNT CREATION,NOT_EVALUABLE - no account-creation timestamp in source,,,,,,,,,,,,,,,
+1,R1,Proposed rule - proxy (1 h),Source new-device flag AND TRANSFER AND > $500 AND <= 1 h after FIRST OBSERVED activity,PROXY,917,46,871,179507,4819576,5.016,0.026,0.018,0.018,0.018,1.397,18.93,2.3,0.0005,473578683.70
+2,R1D,"Proposed rule - proxy, derived device",First use of device_id by sender AND TRANSFER AND > $500 AND <= 1 h after first observed activity,PROXY,1,0,1,179553,4820446,0.000,0.000,0.000,0.000,0.000,0.000,,0.0,0.0000,500106.96
+3,R2,"Proxy, 24 h account-age window",Source new-device flag AND TRANSFER AND > $500 AND <= 24 h after first observed activity,PROXY,957,47,910,179506,4819537,4.911,0.026,0.019,0.018,0.019,1.368,19.36,2.4,0.0005,492532011.61
+4,R3,"Proxy, 7 day account-age window",Source new-device flag AND TRANSFER AND > $500 AND <= 7 days after first observed activity,PROXY,1142,52,1090,179501,4819357,4.553,0.029,0.023,0.021,0.023,1.268,20.96,2.9,0.0006,587891868.84
+5,R4,New device + transfer > $500,Source new-device flag AND TRANSFER AND > $500 (no account-age condition),EVALUATED,10511,464,10047,179089,4810400,4.414,0.258,0.208,0.181,0.210,1.229,21.65,26.7,0.0049,5512962294.85
+6,R5,New device + any type > $500,Source new-device flag AND amount > $500,EVALUATED,1460961,63776,1397185,115777,3423262,4.365,35.519,28.985,91.830,29.219,1.216,21.91,3717.5,0.0778,2823504009974.45
+7,R6,New device only,Source new-device flag,EVALUATED,4103536,179553,3923983,0,896464,4.376,100.000,81.403,100.000,82.071,1.218,21.85,10441.6,0.0838,3074943643682.78
+8,R7,Transfer > $500 only,TRANSFER AND amount > $500,EVALUATED,12859,464,12395,179089,4808052,3.608,0.258,0.257,0.181,0.257,1.005,26.71,32.7,0.0048,6751702007.99
+9,R8,New device + top-5% amount,Source new-device flag AND amount >= P95,EVALUATED,205030,9054,195976,170499,4624471,4.416,5.043,4.066,42.677,4.101,1.230,21.65,521.7,0.0471,1302883731430.84
+10,R9,New device + network evidence,Source new-device flag AND (shared device 1 h OR shared IP 10 min OR rapid pass-through),EVALUATED,90931,4075,86856,175478,4733591,4.481,2.270,1.802,2.247,1.819,1.248,21.31,231.4,0.0301,68023267394.66
+11,R10,Engine score HIGH or CRITICAL,Transaction risk score >= tier_high,EVALUATED,37996,1616,36380,177937,4784067,4.253,0.900,0.755,4.973,0.760,1.184,22.51,96.7,0.0149,159297694696.92
+12,R11,Engine score CRITICAL,Transaction risk score >= tier_critical,EVALUATED,2821,117,2704,179436,4817743,4.147,0.065,0.056,0.384,0.056,1.155,23.11,7.2,0.0013,13043409226.67
+13,R12,Random 1% review (benchmark),Deterministic pseudo-random 1% sample: abs(hashtext(transaction_id)) % 100 = 0,BENCHMARK,49750,1792,47958,177761,4772489,3.602,0.998,0.995,0.962,0.995,1.003,26.76,126.6,0.0156,37543223717.10
